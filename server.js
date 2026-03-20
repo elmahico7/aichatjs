@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import Anthropic from "@anthropic-ai/sdk";
-import livereload from "livereload";
 import path from "path";
 import { fileURLToPath } from "url";
 import { createRequire } from "module";
@@ -15,10 +14,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.join(__dirname, ".env") });
 
 const app = express();
-
-// Live-reload server: watches the `public` folder and notifies the browser on changes
-const lrserver = livereload.createServer();
-lrserver.watch(path.join(process.cwd(), "public"));
 
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
@@ -169,6 +164,10 @@ app.post("/generate-title", async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 8080, () => {
-  console.log('Server running on port 8080');
-});
+if (!process.env.VERCEL) {
+  app.listen(process.env.PORT || 8080, () => {
+    console.log('Server running on port 8080');
+  });
+}
+
+export default app;
