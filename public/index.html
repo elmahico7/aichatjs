@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Left sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>Chats</h2>
+      </div>
+      <button id="newChatBtn" class="new-chat-btn">+ New Chat</button>
+      <div class="chat-history" id="chatHistory"></div>
+      <div class="sidebar-footer">
+        <button id="sidebarToggle" class="sidebar-toggle" aria-label="Hide sidebar" aria-expanded="true">
+          <svg class="sidebar-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main chat area -->
+    <div class="chat">
+      <h1 id="title">AI CHAT</h1>
+      <div id="subtitle">How can i help you?</div>
+      <div id="messages"></div>
+      <form id="form">
+        <input id="input" placeholder="Ask me anything" autocomplete="off" />
+        <button id="sendBtn" class="send-btn" type="submit">Send</button>
+      </form>
+      
+      <!-- PDF Upload Section -->
+      <div class="upload-section">
+        <input type="file" id="pdfInput" accept=".pdf" hidden />
+        <button type="button" id="uploadBtn" class="upload-btn">📎 Upload PDF</button>
+        <div id="uploadStatus" class="upload-status"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:35729/livereload.js?snipver=1"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
